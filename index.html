@@ -10,9 +10,19 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
     body { font-family: 'Hind Siliguri', sans-serif; scroll-behavior: smooth; }
+    
+    /* হোয়াটসঅ্যাপ বাটনের পালস ইফেক্ট */
+    @keyframes pulse-green {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .whatsapp-pulse {
+      animation: pulse-green 2s infinite;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 relative">
 
   <!-- টপ নোটিস বার -->
   <div class="bg-red-600 text-white text-xs md:text-sm py-2 px-4 text-center font-medium">
@@ -20,7 +30,7 @@
   </div>
 
   <!-- হেডার -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
+  <header class="bg-white shadow-sm sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
       <a href="#" class="text-2xl font-extrabold text-red-600 tracking-tight flex items-center gap-1">
         <i class="fa-solid fa-bag-shopping"></i> BuyShop
@@ -33,7 +43,7 @@
 
   <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
 
-    <!-- সেকশন ১: প্রোডাক্ট ক্যাটালগ (Borbila Style) -->
+    <!-- সেকশন ১: প্রোডাক্ট ক্যাটালগ -->
     <section>
       <div class="text-center mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900">আমাদের জনপ্রিয় কালেকশন</h2>
@@ -183,7 +193,7 @@
             <form id="checkoutForm" class="space-y-4">
               <div>
                 <label class="block text-sm font-semibold mb-1">আপনার সম্পূর্ণ নাম <span class="text-red-500">*</span></label>
-                <input type="text" id="custName" required placeholder="মোঃ আসাদুল ইসলাম" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none">
+                <input type="text" id="custName" required placeholder=" মোঃ আসাদুল ইসলাম" class="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none">
               </div>
 
               <div>
@@ -227,7 +237,6 @@
         <p class="text-gray-500 text-sm mt-1">অর্ডার করার পূর্বে প্রোডাক্টটির লাইভ কোয়ালিটি দেখে নিন</p>
       </div>
       <div class="max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-md">
-        <!-- এখানে ইউটিউব ভিডিওর Embed Link বসাবেন -->
         <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Unboxing Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
@@ -240,7 +249,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- রিভিউ ১ -->
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
           <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -252,7 +260,6 @@
           </div>
         </div>
 
-        <!-- রিভিউ ২ -->
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
           <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -264,7 +271,6 @@
           </div>
         </div>
 
-        <!-- রিভিউ ৩ -->
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
           <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -285,6 +291,18 @@
     <p>© 2026 BuyShop. সর্বস্বত্ব সংরক্ষিত।</p>
   </footer>
 
+  <!-- ==================== ফ্লোটিং হোয়াটসঅ্যাপ বাটন ==================== -->
+  <a 
+    href="https://wa.me/8801336911735?text=হ্যালো,%20BuyShop%20থেকে%20একটি%20প্রোডাক্ট%20সম্পর্কে%20জানতে%20চাই।" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 md:p-4 rounded-full shadow-2xl flex items-center gap-2 transition-all duration-300 hover:scale-105 whatsapp-pulse group"
+    title="হোয়াটসঅ্যাপে মেসেজ দিন"
+  >
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <span class="font-semibold text-sm hidden md:inline-block pr-1">হোয়াটসঅ্যাপে মেসেজ দিন</span>
+  </a>
+
   <!-- জাভাস্ক্রিপ্ট লজিক -->
   <script>
     // গুরুত্বপূর্ণ: আপনার Apps Script Web App URL টি এখানে বসান
@@ -296,7 +314,6 @@
     let currentDeliveryAreaName = "ঢাকার ভেতরে";
     let quantity = 1;
 
-    // প্রোডাক্ট নির্বাচনের ফাংশন
     function selectProduct(name, price, imgUrl) {
       currentProduct = name;
       currentPrice = price;
@@ -306,12 +323,9 @@
       document.getElementById('selected-product-img').src = imgUrl;
 
       calculateTotals();
-
-      // মসৃণভাবে অর্ডার ফর্মে স্ক্রল হওয়া
       document.getElementById('orderSection').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // পরিমাণ পরিবর্তন
     function changeQty(amount) {
       if (quantity + amount >= 1) {
         quantity += amount;
@@ -320,7 +334,6 @@
       }
     }
 
-    // ডেলিভারি চার্জ আপডেট
     function updateDelivery(charge, areaName) {
       currentDeliveryCharge = charge;
       currentDeliveryAreaName = areaName;
@@ -328,7 +341,6 @@
       calculateTotals();
     }
 
-    // সর্বমোট হিসাব
     function calculateTotals() {
       const subtotal = currentPrice * quantity;
       const grandTotal = subtotal + currentDeliveryCharge;
@@ -338,7 +350,6 @@
       document.getElementById('btn-total').innerText = grandTotal;
     }
 
-    // ফর্ম সাবমিশন
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
